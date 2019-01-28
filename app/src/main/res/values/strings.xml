@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Task</string>
+    <!--App Message-->
+    <string name="api_default_error">Something wrong happened!</string>
+    <string name="some_error">Some Error Occurred</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="empty">There is no saved data</string>
+    <string name="title_activity_add_city">Map</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="current_location">Current Location</string>
+    <string name="location_added">Location Added Succesfuly</string>
+</resources>
