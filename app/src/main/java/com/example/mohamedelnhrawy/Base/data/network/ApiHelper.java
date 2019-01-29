@@ -20,6 +20,8 @@ import com.example.mohamedelnhrawy.Base.data.network.model.PlaceRequest;
 
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
+
 /**
  * Created by mohamedelnhrawy on 1/21/19.
  */

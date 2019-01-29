@@ -3,27 +3,35 @@ package com.example.mohamedelnhrawy.Base.data.network.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by mohamedelnhrawy on 1/21/19.
  */
 
 public class PlaceRequest implements Parcelable {
-   private double lat,lon;
-   private String appid;
+    @SerializedName("lat")
+   private String lat;
+    @SerializedName("lon")
+    private String  lon;
+    @SerializedName("appid")
+    private String appid;
+    @SerializedName("cnt")
+    private String cnt;
 
-    public double getLat() {
+    public String getLat() {
         return lat;
     }
 
-    public void setLat(double lat) {
+    public void setLat(String lat) {
         this.lat = lat;
     }
 
-    public double getLon() {
+    public String getLon() {
         return lon;
     }
 
-    public void setLon(double lon) {
+    public void setLon(String lon) {
         this.lon = lon;
     }
 
@@ -35,16 +43,16 @@ public class PlaceRequest implements Parcelable {
         this.appid = appid;
     }
 
-    public static Creator<PlaceRequest> getCREATOR() {
-        return CREATOR;
+    public String getCnt() {
+        return cnt;
     }
 
-    public PlaceRequest(double lat, double lon, String appid) {
+    public PlaceRequest(String lat, String lon, String appid, String cnt) {
         this.lat = lat;
         this.lon = lon;
         this.appid = appid;
+        this.cnt = cnt;
     }
-
 
 
     @Override
@@ -54,18 +62,17 @@ public class PlaceRequest implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeDouble(this.lat);
-        dest.writeDouble(this.lon);
+        dest.writeString(this.lat);
+        dest.writeString(this.lon);
         dest.writeString(this.appid);
-    }
-
-    public PlaceRequest() {
+        dest.writeString(this.cnt);
     }
 
     protected PlaceRequest(Parcel in) {
-        this.lat = in.readDouble();
-        this.lon = in.readDouble();
+        this.lat = in.readString();
+        this.lon = in.readString();
         this.appid = in.readString();
+        this.cnt = in.readString();
     }
 
     public static final Parcelable.Creator<PlaceRequest> CREATOR = new Parcelable.Creator<PlaceRequest>() {

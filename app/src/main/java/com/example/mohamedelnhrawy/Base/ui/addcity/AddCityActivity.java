@@ -153,10 +153,12 @@ public class AddCityActivity extends BaseActivity implements OnMapReadyCallback,
         location.setLongitude(latLng.longitude);
         clearMap();
         drawClickedLocation(location);
-        com.example.mohamedelnhrawy.Base.data.db.model.Location location1=new com.example.mohamedelnhrawy.Base.data.db.model.Location();
-        location1.setLocation_latitude(location.getLatitude());
-        location1.setLocation_longitude(location.getLongitude());
-        mPresenter.addLocationToDB(location1);
+        // lovation model
+        Log.e("latlng",""+location.getLatitude()+""+location.getLongitude());
+        com.example.mohamedelnhrawy.Base.data.db.model.Location model=new com.example.mohamedelnhrawy.Base.data.db.model.Location();
+        model.setLocation_latitude(location.getLatitude());
+        model.setLocation_longitude(location.getLongitude());
+        mPresenter.addLocationToDB(model);
 
     }
 

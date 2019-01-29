@@ -49,7 +49,7 @@ public class DetailsActivity extends BaseActivity implements DetailsMvpView {
 
     @Override
     public void updateUi(Place place) {
-        Log.e("Detailsplace",""+place.getCity());
+        Log.e("Detailsplace",""+place.getList().get(0).getHumidity());
 
     }
 }

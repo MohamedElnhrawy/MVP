@@ -1,5 +1,7 @@
 package com.example.mohamedelnhrawy.Base.ui.details;
 
+import android.util.Log;
+
 import com.androidnetworking.error.ANError;
 import com.example.mohamedelnhrawy.Base.BuildConfig;
 import com.example.mohamedelnhrawy.Base.data.DataManager;
@@ -36,8 +38,9 @@ public class DetailsPresenter <V extends DetailsMvpView> extends BasePresenter<V
     @Override
     public void getLocationData(Location location) {
         getMvpView().showLoading();
-        getCompositeDisposable().add(getDataManager().getPlaceData(new PlaceRequest(location.getLocation_latitude(),
-                location.getLocation_longitude(), BuildConfig.API_KEY)).subscribeOn(getSchedulerProvider().io())
+        getCompositeDisposable().add(getDataManager().getPlaceData(new PlaceRequest(String.valueOf(location.getLocation_latitude()),
+                String.valueOf( location.getLocation_longitude()), BuildConfig.API_KEY,String.valueOf(10)))
+                .subscribeOn(getSchedulerProvider().io())
         .observeOn(getSchedulerProvider().ui())
         .subscribe(new Consumer<Place>() {
             @Override
@@ -48,6 +51,7 @@ public class DetailsPresenter <V extends DetailsMvpView> extends BasePresenter<V
 
                 getMvpView().hideLoading();
                 getMvpView().updateUi(place);
+                Log.e("succ",place.toString());
 
             }
         }, new Consumer<Throwable>() {
@@ -56,6 +60,7 @@ public class DetailsPresenter <V extends DetailsMvpView> extends BasePresenter<V
                 if (!isViewAttached()) {
                     return;
                 }
+                Log.e("succ","false");
 
                 getMvpView().hideLoading();
 
